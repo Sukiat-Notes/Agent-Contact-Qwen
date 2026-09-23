@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  index.html
+  PURPOSE : Single page of the Contact web app. Two sections:
+              1. Contact form  (add new / edit existing)
+              2. Contact list  (rendered by js/app.js from the API)
+         All logic lives in js/app.js; all network calls in
+         js/api.js. This file intentionally contains NO inline
+         JavaScript, keeping structure (HTML) and behavior (JS)
+         cleanly separated.
+  STATUS  : [USED] — served at http://localhost:3000/ by the
+            backend (express.static in backend/src/app.js).
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — CRUD web app</title>
+
+  <!-- Styling (see css/styles.css) -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="layout">
+
+    <!-- ==================================================================
+         SECTION 1: CONTACT FORM
+         id="contact-form" is wired by js/app.js.
+         mode = "create" (default)  → POST /api/contacts
+         mode = "edit"              → PUT  /api/contacts/<id>
+         The hidden <input id="contact-id"> holds the record id while
+         editing; it is empty when creating.
+         ================================================================== -->
+    <section class="card" aria-labelledby="form-title">
+      <h1 id="form-title">Contact form</h1>
+      <p class="hint" id="form-hint">Add a new contact.</p>
+
+      <form id="contact-form" autocomplete="off">
+        <!-- Hidden field: set to a contact id when editing. -->
+        <input type="hidden" id="contact-id" />
+
+        <label>
+          <span>Name <em class="req">*</em></span>
+          <input type="text" id="field-name" name="name" required
+                 placeholder="Jane Doe" />
+        </label>
+
+        <label>
+          <span>Email <em class="req">*</em></span>
+          <input type="email" id="field-email" name="email" required
+                 placeholder="jane@example.com" />
+        </label>
+
+        <label>
+          <span>Phone</span>
+          <input type="tel" id="field-phone" name="phone"
+                 placeholder="+1-555-0100" />
+        </label>
+
+        <label>
+          <span>Company</span>
+          <input type="text" id="field-company" name="company"
+                 placeholder="Acme Corp" />
+        </label>
+
+        <label>
+          <span>Notes</span>
+          <textarea id="field-notes" name="notes" rows="3"
+                    placeholder="Anything worth remembering..."></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-save">Add contact</button>
+          <!-- Only visible while editing a record. -->
+          <button type="button" id="btn-cancel" class="secondary hidden">Cancel</button>
+        </div>
+      </form>
+
+      <!-- Validation / server error messages land here (populated by JS). -->
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 2: CONTACT LIST
+         <tbody id="contacts-body"> is re-rendered by js/app.js on every
+         load and after every successful mutation.
+         ================================================================== -->
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-header">
+        <h1 id="list-title">Contacts</h1>
+        <span class="count" id="contacts-count">0</span>
+        <button type="button" id="btn-refresh" class="secondary">Refresh</button>
+      </div>
+
+      <table class="contacts-table" id="contacts-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Company</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="contacts-body">
+          <!-- Rows are injected here by js/app.js -->
+        </tbody>
+      </table>
+
+      <!-- Shown when the list is empty (no rows). -->
+      <p class="empty" id="contacts-empty">No contacts yet — add one on the left.</p>
+    </section>
+
+  </main>
+
+  <!--
+    Script order matters:
+      api.js  → defines window.ContactApi (fetch wrapper)  [USED]
+      app.js  → UI controller; depends on ContactApi       [USED]
+      ui.js   → future helpers (toasts, modals)            [RESERVED - not required]
+  -->
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
