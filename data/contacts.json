@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "_comment": "PURPOSE: This file is the sample 'database' for the Contact web app. The backend (backend/src/models/contactModel.js) reads and writes this file to implement the CRUD operations. STATUS: USED (seed data) - edit or clear the `contacts` array to change the starting records. If you prefer your local copies to stay out of Git, the model can be pointed at `contacts.local.json` (see .gitignore).",
+    "version": 1,
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z"
+  },
+  "contacts": [
+    {
+      "id": "c-1001",
+      "name": "Ada Lovelace",
+      "email": "ada@example.com",
+      "phone": "+1-555-0101",
+      "company": "Analytical Engines Ltd",
+      "notes": "Sample record 1 - safe to delete or edit via the API.",
+      "createdAt": "2026-09-23T00:00:00.000Z",
+      "updatedAt": "2026-09-23T00:00:00.000Z"
+    },
+    {
+      "id": "c-1002",
+      "name": "Grace Hopper",
+      "email": "grace@example.com",
+      "phone": "+1-555-0102",
+      "company": "Navy Computing",
+      "notes": "Sample record 2 - safe to delete or edit via the API.",
+      "createdAt": "2026-09-23T00:00:00.000Z",
+      "updatedAt": "2026-09-23T00:00:00.000Z"
+    },
+    {
+      "id": "c-1003",
+      "name": "Alan Turing",
+      "email": "alan@example.com",
+      "phone": "+1-555-0103",
+      "company": "",
+      "notes": "Sample record 3 with an EMPTY company field (demonstrates optional fields).",
+      "createdAt": "2026-09-23T00:00:00.000Z",
+      "updatedAt": "2026-09-23T00:00:00.000Z"
+    }
+  ]
+}

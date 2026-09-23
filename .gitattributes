@@ -1,0 +1,21 @@
+# ============================================================
+# .gitattributes
+# Purpose : Tell Git how to handle line endings and file types.
+# Status  : USED — keeps `git diff`/`git blame` clean across
+#           Windows / Linux / macOS.
+# ============================================================
+
+# Use LF inside the repository; let each OS expand on checkout.
+* text=auto eol=lf
+
+# Explicitly mark the file types we use.
+*.md      text
+*.js      text diff=javascript
+*.json    text
+*.css     text
+*.html    text
+
+# Treat anything that looks binary as binary (safety net).
+*.png     binary
+*.jpg     binary
+*.ico     binary

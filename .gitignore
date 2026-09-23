@@ -1,0 +1,30 @@
+# ============================================================
+# .gitignore
+# Purpose : List files/directories that must NEVER be committed
+#           to the Git repository.
+# Status  : USED — applied on every `git add` / `git commit`.
+# ============================================================
+
+# ---- Node.js (backend) -------------------------------------
+# Installed npm dependencies (re-created by `npm install`).
+backend/node_modules/
+
+# Node crash / debug dumps.
+backend/*.log
+npm-debug.log*
+
+# Environment files with real secrets.
+# (`.env.example` IS committed; real `.env` is NOT.)
+backend/.env
+
+# ---- Runtime data ------------------------------------------
+# Local-only runtime copies of the contact database.
+# (The committed sample lives in `data/contacts.json`.)
+data/contacts.local.json
+
+# ---- OS / editor junk --------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
