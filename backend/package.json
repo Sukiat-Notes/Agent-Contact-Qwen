@@ -1,0 +1,27 @@
+{
+  "name": "agent-contact-backend",
+  "version": "0.1.0",
+  "description": "REST API (Node.js + Express) for the Agent-Contact CRUD web app. Persists contacts to ../data/contacts.json. STATUS: PREPARED - dependencies NOT installed yet, server NOT started yet.",
+  "type": "commonjs",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "keywords": [
+    "contacts",
+    "crud",
+    "rest",
+    "express",
+    "agent"
+  ],
+  "license": "MIT",
+  "private": true
+}
